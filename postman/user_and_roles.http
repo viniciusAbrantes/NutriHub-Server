@@ -1,0 +1,53 @@
+### List users (only admin is initially created by bootstrapper)
+GET localhost:8080/api/users
+
+### Add new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "New User",
+  "email": "new.user@pucpr.edu.br",
+  "password": "123456"
+}
+
+### List users ASC
+GET localhost:8080/api/users?sortMethod=ASC
+
+### List users DESC
+GET localhost:8080/api/users?sortMethod=DESC
+
+### Login
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@nutrihub.com",
+  "password": "nutrihub_admin"
+}
+
+### Delete new user
+DELETE http://localhost:8080/api/users/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczMjcyNjksImV4cCI6MTcxNzMzNDQ2OSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMSIsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJBdXRoIFNlcnZlciBBZG1pbmlzdHJhdG9yIiwicm9sZXMiOlsiQURNSU4iXX19.rTlEmcjQGqNrM9hrJJrhpc9NpKXY0ouF5p_8cgtQBWw
+
+### Try to delete admin (won't work because there's only one admin)
+DELETE http://localhost:8080/api/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTcyNzczNDMsImV4cCI6MTcxNzI4NDU0MywiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMSIsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJBdXRoIFNlcnZlciBBZG1pbmlzdHJhdG9yIiwicm9sZXMiOlsiQURNSU4iXX19.sSkwjna0e-KlN_rO7yQPiiJTUV9BLS93Q21W6RGLD7w
+
+### Add another user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Another User",
+  "email": "another.user@pucpr.edu.br",
+  "password": "abcdef"
+}
+
+### Set it as admin
+PUT http://localhost:8080/api/users/3/roles/ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczMjcyNjksImV4cCI6MTcxNzMzNDQ2OSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMSIsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJBdXRoIFNlcnZlciBBZG1pbmlzdHJhdG9yIiwicm9sZXMiOlsiQURNSU4iXX19.rTlEmcjQGqNrM9hrJJrhpc9NpKXY0ouF5p_8cgtQBWw
+
+### Try to delete admin (now it will work because there's more than one admin)
+DELETE http://localhost:8080/api/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczMjk2MTAsImV4cCI6MTcxNzMzNjgxMCwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMSIsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJOdXRyaUh1YiBBZG1pbmlzdHJhdG9yIiwicm9sZXMiOlsiQURNSU4iXX19.Izv6pXP84pqCW9IYuXGTgd_aedOYMp8l786bFIapgvY

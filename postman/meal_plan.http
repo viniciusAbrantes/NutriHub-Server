@@ -1,0 +1,83 @@
+### Add user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Dietitian/Nutritionist",
+  "email": "diet.user@pucpr.edu.br",
+  "password": "abcdef"
+}
+
+### Set it as user
+PUT http://localhost:8080/api/users/2/roles/USER
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDU2MzksImV4cCI6MTcxNzM1MjgzOSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMSIsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJOdXRyaUh1YiBBZG1pbmlzdHJhdG9yIiwicm9sZXMiOlsiQURNSU4iXX19.yFTogSs1yBQoHvNSjaajCLC75blkPjubA_LA1bdWUaw
+
+### Login
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "diet.user@pucpr.edu.br",
+  "password": "abcdef"
+}
+
+### Add new patient
+POST http://localhost:8080/api/users/2/patients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDM2ODksImV4cCI6MTcxNzM1MDg4OSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.MtBl0sbz5q2NZE1hN7vUYsAcdHZLrcgJbcs8PV1ZIXU
+
+{
+  "name": "Vinicius Abrantes",
+  "email": "abrantes.vinicius@pucpr.edu.br",
+  "age": 25,
+  "sex": "M",
+  "height": 1.74,
+  "weight": 78.4
+}
+
+### Add new plan
+POST http://localhost:8080/api/users/2/patients/1/plan
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDM2ODksImV4cCI6MTcxNzM1MDg4OSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.MtBl0sbz5q2NZE1hN7vUYsAcdHZLrcgJbcs8PV1ZIXU
+
+{
+  "name": "LowCarb Plan"
+}
+
+### Add new meal
+POST http://localhost:8080/api/users/2/patients/1/plan/meals
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDM1NzgsImV4cCI6MTcxNzM1MDc3OCwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.48aLmw9z9GVtR43v_fyPlAQl95jJ08LP46eCFM9l8h8
+
+{
+  "name": "Breakfast"
+}
+
+### Add new food
+POST http://localhost:8080/api/users/2/patients/1/plan/meals/1/foods
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDM1NzgsImV4cCI6MTcxNzM1MDc3OCwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.48aLmw9z9GVtR43v_fyPlAQl95jJ08LP46eCFM9l8h8
+
+{
+  "name": "rice",
+  "amount": 200,
+  "unit": "g"
+}
+
+### Update patient
+PUT http://localhost:8080/api/users/2/patients/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDM2ODksImV4cCI6MTcxNzM1MDg4OSwiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.MtBl0sbz5q2NZE1hN7vUYsAcdHZLrcgJbcs8PV1ZIXU
+
+{
+  "name": "Vinicius Abrantes Pereira",
+  "email": "abrantes.vinicius@pucpr.edu.br",
+  "age": 26,
+  "sex": "M",
+  "height": 1.74,
+  "weight": 79.2
+}
+
+### Delete
+DELETE http://localhost:8080/api/users/2/patients/1/plan/meals/1/foods/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTczNDY1NjcsImV4cCI6MTcxNzM1Mzc2NywiaXNzIjoiTnV0cmlIdWIgU2VydmVyIiwic3ViIjoiMiIsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJEaWV0aXRpYW4vTnV0cml0aW9uaXN0Iiwicm9sZXMiOlsiVVNFUiJdfX0.dhLf-pk-FQJaHDS0PTvPBbv5txaMAoxxKtfr8r9HCzU
